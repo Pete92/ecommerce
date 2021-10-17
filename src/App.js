@@ -1,9 +1,14 @@
-import './App.css';
-import Nav from './components/navigointi/Nav';
-import About from './components/About';
-import Shop from './components/Shop';
-import Product from './components/product';
-import Cart from './components/Cart';
+//import './App.css';
+import Nav from './components/Layout/Header';
+import About from './components/Pages/About';
+import Shop from './components/Pages/Shop';
+import Product from './components/Pages/Product';
+import Cart from './components/Pages/Cart';
+import Footer from './components/Layout/Footer';
+
+
+import { Container } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'; //bootsrapin css
 
 //Käytetään rect-router-domia, jotta voidaan ohjata ja näyttää oikea sivu
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
@@ -20,6 +25,7 @@ function App() {
             <Route path="/shop/:id" component={Product}/>
             <Route path="/cart" component={Cart}/>
           </Switch>
+          <Footer />
       </div>
     </Router>
   );
@@ -27,9 +33,10 @@ function App() {
 
 const Home = () => (
   <div>
-    <h1>Home Page</h1>
+    <Container>
+      <h1>Home Page</h1>
+    </Container>
   </div>
 );
-
 
 export default App;

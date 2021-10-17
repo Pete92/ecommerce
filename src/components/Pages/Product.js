@@ -1,4 +1,8 @@
 import React, {useState, useEffect} from "react";
+import {Container} from 'react-bootstrap';
+
+
+/* TUOTESIVU */
 
 function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai ensikertaa ladataan.
     useEffect(() => {   //Match hakee tiedot urlista ja tätä voidaan hyödyntaa jos esim halutaan hakea id tiedot
@@ -19,10 +23,10 @@ function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai en
     
 
   return (
-    <div className="App">
-        <h1 style={{fontSize: 20}}>{ item.title }</h1> {/* renderöidään käyttäjälle title ja kuva */}
+      <Container>
+        <h3 style={{fontSize: 20}}>{ item.title }</h3> {/* renderöidään käyttäjälle title ja kuva */}
         <img style={{maxHeight: 240}} src={item.image} alt="tuote"/>
-    </div>
+      </Container>
   );
 }
 
