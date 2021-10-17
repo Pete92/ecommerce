@@ -1,19 +1,21 @@
 import React, {useEffect} from "react";
+import {Container} from 'react-bootstrap';
 
-/* Ostoskori */
+/* OSTOSKORI */
 
 
 
 function Cart() {               //UseEffect = kun sivulla tapahtuu jotatain tai ensikertaa ladataan.
+
 
     useEffect(() => {
         
     }, [])
 
   return (
-    <div className="App">
-      <h3>Ostoskori</h3>
-    </div>
+      <Container>
+        <h3>Ostoskori</h3>
+      </Container>
   );
 }
 

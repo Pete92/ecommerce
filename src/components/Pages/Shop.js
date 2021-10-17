@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import {Link} from 'react-router-dom';
+import {Container, Row} from 'react-bootstrap';
+import ProductCard from "./ProductCard";
 
 /* TUOTEET. Pitää varmaankin tehdä toinen state johon voidaan työntää halutut tuotteet ja
     näistä tuotteista tiedot(hinta, title, koko). Tämä viedään sitten cart sivulle.
@@ -22,14 +23,14 @@ function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai 
     };
     
 
-  return (
-    <div className="App">
-       {items.map(item => ( //Käytetään map functionia joka etsii halutun id tiedot
-          <h1 key={item.id}>
-            <Link to={`/shop/${item.id}`}>{item.title}</Link> {/* linkki vie tämän id:en tuote sivulle */}
-            </h1>      
-      ))} 
-    </div>
+  return ( //Palautetaan productcard compnentti johon laitetaan statesta item
+      <Container style={{marginTop: '1.3rem'}}>
+        <Row>
+          {items.map(item => ( //Käytetään map functionia joka etsii halutun id tiedot(Looppaa datan)
+              <ProductCard key={item.id} item={item} />      //Lähetetään Staten kanssa
+          ))}
+        </Row>
+      </Container> 
   );
 }
 
