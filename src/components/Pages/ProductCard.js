@@ -1,9 +1,12 @@
 import React from "react";
-import {Card, Button, Col} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Card, Col} from 'react-bootstrap';
+import Button from '../custom/Button';
+
+
 
 
 const ProductCard = ({item}) => { //Shop sivulla lähetettiin state ja täällä käyttöön
+    
     //Card kuvan koko määritys
     const imgSize = {
         width: '120px',
@@ -24,14 +27,12 @@ const ProductCard = ({item}) => { //Shop sivulla lähetettiin state ja täällä
                     <Card.Img variant="top" style={imgSize} src={item.image} />
                     <Card.Body>
                         <Card.Title>
-                                <Link to={`/shop/${item.id}`}>
-                                    <h5 style={{fontSize: '1rem'}}>{item.title}</h5>
-                                </Link>
-                            </Card.Title> {/* linkki vie tämän id:en tuote sivulle */}
+                            <h5 style={{fontSize: '1rem'}}>{item.title}</h5>
+                        </Card.Title> {/* linkki vie tämän id:en tuote sivulle */}
                         <Card.Text as='div'>
                         <h5>{item.price} $</h5>
                         </Card.Text>
-                        <Button style={{marginLeft: '80%'}} variant="primary">Buy</Button>
+                        <Button item={item} />
                     </Card.Body>
                 </Card>
             </Col>

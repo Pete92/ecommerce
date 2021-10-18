@@ -26,16 +26,13 @@ function Nav() {
       alignItems: 'center',
       listStyle: 'none',
       margin: 'auto 0',
-      li:{
-        color: 'white'
-      }
   }
 
   return (
     <nav style={navCss}>
         <h3>Logo</h3>
         <ul style={navLinks}>
-          <Link to="/about"> {/* Navigoinnissa jokaiselle linkille oma reitti ja vähän Css */}
+          <Link style={NavStyle} to="/about"> {/* Navigoinnissa jokaiselle linkille oma reitti ja vähän Css */}
             <li>About</li>
           </Link>
           <Link style={NavStyle} to="/shop">
