@@ -19,12 +19,19 @@ function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai en
 
     //Hetaan rest apista tämä id data ja laitetaan stateen
     const fetchItem = async () => {
-        const fetchItem = await fetch(`https://fakestoreapi.com/products/${match.params.id}`);
+        const fetchItem = await fetch(`http://localhost/ecommerce/items/${match.params.id}`);
         const item = await fetchItem.json();
         console.log(item);
         setItem(item);
     };
     
+    if(window.location.pathname){
+      var elements = document.getElementsByClassName("relativeFooter");
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove('relativeFooter');
+      }
+    }
+
 
     //CSS lisäystä
     const kuvaDiv = {

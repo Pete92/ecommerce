@@ -2,6 +2,8 @@ import React, {useState, useEffect} from "react";
 import {Container, Row} from 'react-bootstrap';
 import ProductCard from "./ProductCard";
 
+
+
 /* TUOTEET. Pitää varmaankin tehdä toinen state johon voidaan työntää halutut tuotteet ja
     näistä tuotteista tiedot(hinta, title, koko). Tämä viedään sitten cart sivulle.
 */
@@ -16,7 +18,7 @@ function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai 
 
     //Haetaan dataa urlista ja laitetaan json muodossa
     const fetchItems = async () => {
-        const data = await fetch('https://fakestoreapi.com/products');
+        const data = await fetch('http://localhost/ecommerce/items');
         const items = await data.json();
         console.log(items);
         setItems(items); //laitetaan urlista saatu data stateen
