@@ -19,7 +19,7 @@ function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai en
 
     //Hetaan rest apista tämä id data ja laitetaan stateen
     const fetchItem = async () => {
-        const fetchItem = await fetch(`https://fakestoreapi.com/products/${match.params.id}`);
+        const fetchItem = await fetch(`http://localhost/ecommerce/items/${match.params.id}`);
         const item = await fetchItem.json();
         console.log(item);
         setItem(item);

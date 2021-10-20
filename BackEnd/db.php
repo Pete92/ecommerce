@@ -7,20 +7,18 @@
 	  // Haetaan kaikki tai yksi item tietokannasta. 
 	  public function fetch($id = 0) {
 	    $sql = 'SELECT * FROM items';
-	    
 		if ($id != 0) {
 	     	$sql .= ' WHERE id = :id';
 			$stmt = $this->conn->prepare($sql);
 			$stmt->execute(['id' => $id]);
+			$rows = $stmt->fetchObject();
 	    } else {
 			$stmt = $this->conn->prepare($sql);
 			$stmt->execute([]);
+			$rows = $stmt->fetchAll();
 		}
-
-		$rows = $stmt->fetchAll();
-	    return $rows;
+		return $rows;
 	  }
-
 
 	  //Tallennetaan uusi item tietokantaan
 	  public function insert($title, $description, $price, $image) {
