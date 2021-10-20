@@ -5,15 +5,19 @@
 	//Luokka Items
 	class Database extends Config {
 	  // Haetaan kaikki tai yksi item tietokannasta. 
-	  ####Palauttaa kaikki vaikka laittaa id:en perään, pitää korjata####
 	  public function fetch($id = 0) {
 	    $sql = 'SELECT * FROM items';
-	    if ($id != 0) {
-	      $sql .= ' WHERE id = :id';
-	    }
-	    $stmt = $this->conn->prepare($sql);
-	    $stmt->execute([]);
-	    $rows = $stmt->fetchAll();
+	    
+		if ($id != 0) {
+	     	$sql .= ' WHERE id = :id';
+			$stmt = $this->conn->prepare($sql);
+			$stmt->execute(['id' => $id]);
+	    } else {
+			$stmt = $this->conn->prepare($sql);
+			$stmt->execute([]);
+		}
+
+		$rows = $stmt->fetchAll();
 	    return $rows;
 	  }
 
