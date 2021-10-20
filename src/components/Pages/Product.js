@@ -25,6 +25,13 @@ function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai en
         setItem(item);
     };
     
+    if(window.location.pathname){
+      var elements = document.getElementsByClassName("relativeFooter");
+      for (var i = 0; i < elements.length; i++) {
+        elements[i].classList.remove('relativeFooter');
+      }
+    }
+
 
     //CSS lisäystä
     const kuvaDiv = {

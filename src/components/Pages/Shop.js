@@ -1,3 +1,5 @@
+import "../../App.css";
+
 import React, {useState, useEffect} from "react";
 import {Container, Row} from 'react-bootstrap';
 import ProductCard from "./ProductCard";
@@ -13,6 +15,15 @@ function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai 
     }, [])
 
     const [items, setItems] = useState([]); //saten määritys
+
+
+    //footeriin uusi class jos itemeitä on enemmän kuin 6
+    if(items.length > 6 ){
+      var elements = document.getElementsByClassName("footer");
+        for (var i = 0; i < elements.length; i++) {
+          elements[i].classList.add('relativeFooter');
+        }
+    }
 
     //Haetaan dataa urlista ja laitetaan json muodossa
     const fetchItems = async () => {

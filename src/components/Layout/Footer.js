@@ -1,8 +1,13 @@
 import React from "react";
 
 
-const footerStyle = {
-        position: "fixed",
+const Footer = () => {
+
+
+    
+    
+    const footerStyle = {
+        position: "absolute",
         left: "0",
         bottom: "0",
         width: "100%",
@@ -12,17 +17,15 @@ const footerStyle = {
         padding: '0.1rem'
         //padding: '0.1rem'
         //minHheight: '10vh'
-}
+    }
 
-
-const footer = () => {
     return (
-        <div style={footerStyle}>
+        <footer style={footerStyle} className="footer">
             <h3>React Store</h3>
-        </div>
+        </footer>
         
         
     )
 }
 
-export default footer;
+export default Footer;
