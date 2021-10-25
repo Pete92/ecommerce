@@ -3,4 +3,4 @@ Olen todella uusi tämän Reactin kanssa ja kokemusta oikeastaan ei ole yhtään
 Jotta saan tämän backendin toiminaan/käyntiin, niin se tapahtuu Xampp:illa.
 
 Requesteina toimii GET, POST, PUT ja DELETE
-urlina tomii tällä hetkellä : http://localhost/ecommerce/items.php/
+urlina toimii tällä hetkellä : http://localhost/ecommerce/items.php/
