@@ -1,11 +1,25 @@
-import React from "react";
-import {Card, Col} from 'react-bootstrap';
-import Button from '../custom/Button';
+import {Card, Col, Button} from 'react-bootstrap';
+import { CartState } from "../../context/Context";
+import { Link } from "react-router-dom";
+
 
 
 
 
 const ProductCard = ({item}) => { //Shop sivulla lähetettiin state ja täällä käyttöön
+    
+    
+    const {
+        state: { cart },
+        dispatch,
+    } = CartState();
+
+
+
+    console.log(cart);
+
+
+
     
     //Card kuvan koko määritys
     const imgSize = {
@@ -32,7 +46,20 @@ const ProductCard = ({item}) => { //Shop sivulla lähetettiin state ja täällä
                         <Card.Text as='div'>
                         <h5>{item.price} $</h5>
                         </Card.Text>
-                        <Button item={item} />
+                        <Link to={`/shop/${item.id}`}>
+                            <Button>
+                                Details
+                            </Button>
+                        </Link>
+                        
+                        <Button style={{margin: "0 5px"}} onClick={() =>{
+                                dispatch({
+                                    type: 'ADD_TO_CART',
+                                    payload: item
+                                })
+                            }}>
+                            Add to cart
+                        </Button>
                     </Card.Body>
                 </Card>
             </Col>

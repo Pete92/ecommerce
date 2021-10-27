@@ -1,10 +1,50 @@
-import React from "react";
 //Linkki käyttöön react-router-domista
 import {Link} from 'react-router-dom'; 
+import { CartState } from '../../context/Context';
+
+
 
 /* NAVIGOINTI */
 
-function Nav() {
+function Nav({ user }) {
+  //console.log(user)
+
+  //Kirjautuneelle reitti Logouttiin
+  function UserGreeting() {
+    return <Link style={NavStyle} to="/logout"> {/* Navigoinnissa jokaiselle linkille oma reitti ja vähän Css */}
+    <li>Logout</li>
+  </Link>;
+  }
+  //Ei kirjautunut
+  function GuestGreeting() {
+    return <Link style={NavStyle} to="/login"><li>Login</li></Link>
+  }
+  function Greeting() {
+    const isLoggedIn = user.user;
+    if (isLoggedIn !== 'found') {    
+        return <UserGreeting />;  
+    }  
+
+    return <GuestGreeting />;
+}
+
+function RegisterUser() {
+  return <Link style={NavStyle} to="/register"><li>Register</li></Link>
+}
+
+function Register() {
+  const isRegistered = user.user;
+  if (isRegistered !== 'found') {    
+    return null
+  }  
+  return <RegisterUser />;
+  
+}
+
+  const {
+    state: { cart }
+  } = CartState();
+
   const NavStyle = {
     color: 'White'
   };
@@ -32,14 +72,13 @@ function Nav() {
     <nav style={navCss}>
         <h3>Logo</h3>
         <ul style={navLinks}>
-          <Link style={NavStyle} to="/about"> {/* Navigoinnissa jokaiselle linkille oma reitti ja vähän Css */}
-            <li>About</li>
-          </Link>
-          <Link style={NavStyle} to="/shop">
-            <li>Shop</li>
+        <Greeting isLoggedIn={false} />
+        <Register isRegistered={false}/>
+          <Link style={NavStyle} to="/shop" user={user}>
+            <li>Shop </li>
           </Link>
           <Link style={NavStyle} to="/cart">
-            <li>Cart</li>
+            <li>Cart({cart.length})</li>
           </Link>
         </ul>
     </nav>
