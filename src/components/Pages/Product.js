@@ -11,7 +11,7 @@ import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai ensikertaa ladataan.
     useEffect(() => {   //Match hakee tiedot urlista ja tätä voidaan hyödyntaa jos esim halutaan hakea id tiedot
         fetchItem();
-        console.log(match);
+        //console.log(match);
     }, [])
 
     const [item, setItem] = useState([]); //saten määritys
@@ -25,13 +25,6 @@ function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai en
         setItem(item);
     };
     
-    if(window.location.pathname){
-      var elements = document.getElementsByClassName("relativeFooter");
-      for (var i = 0; i < elements.length; i++) {
-        elements[i].classList.remove('relativeFooter');
-      }
-    }
-
 
     //CSS lisäystä
     const kuvaDiv = {
