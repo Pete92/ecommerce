@@ -1,45 +1,18 @@
 //Linkki käyttöön react-router-domista
+import { useContext } from 'react';
 import {Link} from 'react-router-dom'; 
 import { CartState } from '../../context/Context';
+import { UserContext} from '../../context/UserContext';
 
 
 
 /* NAVIGOINTI */
 
-function Nav({ user }) {
-  //console.log(user)
+function Nav() {
 
-  //Kirjautuneelle reitti Logouttiin
-  function UserGreeting() {
-    return <Link style={NavStyle} to="/logout"> {/* Navigoinnissa jokaiselle linkille oma reitti ja vähän Css */}
-    <li>Logout</li>
-  </Link>;
-  }
-  //Ei kirjautunut
-  function GuestGreeting() {
-    return <Link style={NavStyle} to="/login"><li>Login</li></Link>
-  }
-  function Greeting() {
-    const isLoggedIn = user.user;
-    if (isLoggedIn !== 'found') {    
-        return <UserGreeting />;  
-    }  
-
-    return <GuestGreeting />;
-}
-
-function RegisterUser() {
-  return <Link style={NavStyle} to="/register"><li>Register</li></Link>
-}
-
-function Register() {
-  const isRegistered = user.user;
-  if (isRegistered !== 'found') {    
-    return null
-  }  
-  return <RegisterUser />;
+  const { user } = useContext(UserContext);
+  console.log(user)
   
-}
 
   const {
     state: { cart }
@@ -72,9 +45,20 @@ function Register() {
     <nav style={navCss}>
         <h3>Logo</h3>
         <ul style={navLinks}>
-        <Greeting isLoggedIn={false} />
-        <Register isRegistered={false}/>
-          <Link style={NavStyle} to="/shop" user={user}>
+          { /* Jos käyttäjä löytyy */
+            user.length === 0 ? <Link style={NavStyle} to="/login">
+              <li>Login </li>
+            </Link> : <Link style={NavStyle} to="/logout">
+              <li>logout </li>
+            </Link>
+          }
+
+          { /* Jos käyttäjä löytyy */
+            user.length === 0 ? <Link style={NavStyle} to="/register">
+              <li>Register </li>
+            </Link> : ''
+          }
+          <Link style={NavStyle} to="/shop">
             <li>Shop </li>
           </Link>
           <Link style={NavStyle} to="/cart">
