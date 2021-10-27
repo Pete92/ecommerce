@@ -2,6 +2,8 @@ import "../../App.css";
 import React, {useState, useEffect} from "react";
 import {Container, Row, Col} from 'react-bootstrap';
 import ProductCard from "./ProductCard";
+import { useContext } from 'react';
+import { UserContext} from '../../context/UserContext';
 
 
 
@@ -12,6 +14,9 @@ import ProductCard from "./ProductCard";
 
 
 function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai ensikertaa ladataan.
+  const { user } = useContext(UserContext);
+  console.log(user.length)
+
     useEffect(() => {
       //Haetaan dataa urlista ja laitetaan json muodossa
       const fetchItems = async () => {
@@ -38,15 +43,19 @@ function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai 
   return ( 
       <Container style={{marginTop: '1.3rem'}}>
         <Row>
-          <Col style={{textAlign: 'center', margin: "10px 0"}} xl={12}>
-            <input type="text" 
-            style={{
-              width: "40%", 
-              textAlign: "center", 
-              borderRadius: "5px 5px"
-              }} 
-              placeholder="Etsi Tuotetta" onChange={event => {searchItems(event.target.value)} } />
-          </Col>
+          { /* jos user löytyy */
+          user.length > 0 ? 
+            <Col style={{textAlign: 'center', margin: "10px 0"}} xl={12}>
+              <input type="text" 
+              style={{
+                width: "40%", 
+                textAlign: "center", 
+                borderRadius: "5px 5px"
+                }} 
+                placeholder="Etsi Tuotetta" onChange={event => {searchItems(event.target.value)} } />
+            </Col>
+          : ''
+        }
          {/*  {items.map(item => ( //Käytetään map functionia joka etsii halutun id tiedot(Looppaa datan)
               <ProductCard key={item.id} item={item}  />      //Lähetetään Staten kanssa
           ))} */}

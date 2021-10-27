@@ -9,37 +9,43 @@ import Register from './components/UserController/Register';
 
 import { Container } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootsrapin css
-
+import { useState, useMemo } from 'react';
 //Käytetään rect-router-domia, jotta voidaan ohjata ja näyttää oikea sivu
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import { useState } from 'react';
+import { UserContext } from './context/UserContext';
 
 
 
 
 
 function App() {
+  const [user, setUser] = useState([]);
+  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+  
 
-  const [user, checkUser] = useState({user: 'found'})
+  
 
 
 
 
 
   return (
-    <Router>  
+    <Router>
+      <UserContext.Provider value={value}>
       <div className="App">
-        <Nav user={user} />
+        <Nav />
           <Switch>
-            <Route exact path="/" component={Home}/>  { /* reitit sivuille. exact käytetään jotta voidaan mennä /shop sivulle tai /shop/id. Muuten loppuisi matka / kohdalla */}
-            <Route path="/login" component={Login} />
-            <Route path="/register" component={Register} />
-            <Route path="/shop" exact component={Shop}   />
-            <Route path="/shop/:id" component={Product}/>
-            <Route path="/cart" component={Cart}/>
+              <Route exact path="/" component={Home} />  { /* reitit sivuille. exact käytetään jotta voidaan mennä /shop sivulle tai /shop/id. Muuten loppuisi matka / kohdalla */}
+              <Route path="/login" component={Login} />
+              <Route path="/register" component={Register} />
+              <Route path="/shop" exact component={Shop}   />
+              <Route path="/shop/:id" component={Product}/>
+              <Route path="/cart" component={Cart}/>
+            
           </Switch>
           <Footer />
       </div>
+      </UserContext.Provider>
     </Router>
   );
 }
