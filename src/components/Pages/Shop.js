@@ -6,13 +6,6 @@ import { useContext } from 'react';
 import { UserContext} from '../../context/UserContext';
 
 
-
-
-/* TUOTEET. Pitää varmaankin tehdä toinen state johon voidaan työntää halutut tuotteet ja
-    näistä tuotteista tiedot(hinta, title, koko). Tämä viedään sitten cart sivulle.
-*/
-
-
 function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai ensikertaa ladataan.
   const { user } = useContext(UserContext);
   console.log(user.length)
@@ -20,7 +13,7 @@ function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai 
     useEffect(() => {
       //Haetaan dataa urlista ja laitetaan json muodossa
       const fetchItems = async () => {
-        const data = await fetch('http://localhost/ecommerce/items');
+        const data = await fetch('http://localhost/REST_API/items/read.php');
         const items = await data.json();
         setItems(items); //laitetaan urlista saatu data stateen
         console.log(items);
@@ -63,7 +56,7 @@ function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai 
               if (searchItems === ""){
                 return null
 
-              } else if (item.title.toLowerCase().includes(search.toLowerCase())){
+              } else if (item.title.toLowerCase().includes(search.toLowerCase()) || item.gtin.toLowerCase().includes(search.toLowerCase())){
                  return <ProductCard key={item.id} item={item}  />
               }
 
