@@ -14,7 +14,7 @@ import { useHistory } from "react-router-dom";
 const Login = () => {
     const history = useHistory();
     const { user, setUser } = useContext(UserContext);
-    const LOGIN_URL = "http://localhost/REST_API/user/login.php";
+    const LOGIN_URL = "http://localhost/BackEnd/user/login.php";
 
 
     function handleSubmit(e) {
