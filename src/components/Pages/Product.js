@@ -20,7 +20,7 @@ function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai en
 
     //Hetaan rest apista tämä id data ja laitetaan stateen
     const fetchItem = async () => {
-        const fetchItem = await fetch(`http://localhost/REST_API/items/single_read.php/?id=${match.params.id}`);
+        const fetchItem = await fetch(`http://localhost/BackEnd/items/single_read.php/?id=${match.params.id}`);
         const item = await fetchItem.json();
         console.log(item);
         setItem(item);

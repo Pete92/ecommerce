@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 /* REGISTER COMPONENTTI */
 const Register = () => {
    const history = useHistory();
-   const Register_URL = "http://localhost/REST_API/user/register.php";
+   const Register_URL = "http://localhost/BackEnd/user/register.php";
 
    const  handleSubmit = (e) => {
       e.preventDefault()

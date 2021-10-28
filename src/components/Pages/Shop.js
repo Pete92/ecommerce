@@ -13,7 +13,7 @@ function Shop() {               //UseEffect = kun sivulla tapahtuu jotatain tai 
     useEffect(() => {
       //Haetaan dataa urlista ja laitetaan json muodossa
       const fetchItems = async () => {
-        const data = await fetch('http://localhost/REST_API/items/read.php');
+        const data = await fetch('http://localhost/BackEnd/items/read.php');
         const items = await data.json();
         setItems(items); //laitetaan urlista saatu data stateen
         console.log(items);
