@@ -99,3 +99,17 @@ h2 {
   list-style: none;
   margin: auto 0;
 }
+
+/***Kaikki tuotteet***/
+.imgSize {
+  width: 120px !important;
+  margin: 0 auto;
+  padding: 10px 0;
+  height: 150px;
+}
+
+.cardStyle {
+  height: 97%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px 0;
+}
