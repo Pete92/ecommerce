@@ -1,11 +1,6 @@
 import React from "react";
-
-
 const Footer = () => {
 
-
-    
-    
     const footerStyle = {
         position: "fixed",
         left: "0",
@@ -20,12 +15,9 @@ const Footer = () => {
     }
 
     return (
-        <footer style={footerStyle} className="footer">
+        <footer style={footerStyle}>
             <h3>React Store</h3>
         </footer>
-        
-        
     )
 }
-
 export default Footer;
