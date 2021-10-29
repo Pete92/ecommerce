@@ -47,7 +47,6 @@ const Home = () => {
       <p>Kirjautumisen jälkeen käyttäjä ohjataan Shop sivulle ja tulee näkyville Search Bar jolla voit etsiä tuotteita.
       Jokaisella tuotteella on oma GTIN-Koodi ja tämä koodi näkyy yksittäisen tuotteen sivulla. Sinne pääsee painamalla Shop sivulla tuotteen (Details) nappia.</p>
       <p>Tässä valmiiksi koodi, jos haluaa vähä nopeuttaa. GTIN-Koodi: 6420256001547 on puhelimelle Nokia 5.4 älypuhelin 4/64GB</p> 
-      
     </Container>
   )
 }
