@@ -21,3 +21,10 @@ ReactDOM.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+
+const proxy = require('http-proxy-middleware')
+
+module.exports = function(app) {
+    // add other server routes to path array
+    app.use(proxy(['/api' ], { target: 'http://localhost:5000' }));
+}
