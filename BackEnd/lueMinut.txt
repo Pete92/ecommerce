@@ -4,10 +4,10 @@ BackEnd REST API
 ##VERKKOKAUPAN BackEndin toiminta käyttäen Postmania##
 
 Palauttaa kaikki tuoteet (GET)
-http://localhost/REST_API/items/single_read.php  
+http://localhost/BackEnd/items/single_read.php  
 
 Palauttaa halutun id:en tiedot(GET)
-http://localhost/REST_API/items/single_read.php/?id=3 
+http://localhost/BackEnd/items/single_read.php/?id=3 
 
 
 Uusi tallennus (POST)
@@ -16,7 +16,7 @@ Lähetetään Postmanilla POST pyyntö täyttämällä vaadittavat inputit
     "title": "...",
 
 }
-http://localhost/REST_API/items/create.php
+http://localhost/BackEnd/items/create.php
 
 
 
@@ -27,7 +27,7 @@ Lähetetään Postmanilla POST pyyntö täyttämällä vaadittavat inputit
     "title": "...",
 
 }
-http://localhost/REST_API/items/update.php
+http://localhost/BackEnd/items/update.php
 
 
 Tietyn tuotteen poisto(DELETE)
@@ -35,7 +35,7 @@ Lähetetään Postmanilla DELETE pyyntö täyttämällä vaadittavat inputit
 {
     "id": 12
 }
-http://localhost/REST_API/items/delete.php
+http://localhost/BackEnd/items/delete.php
 
 
 
@@ -49,7 +49,7 @@ Lähetetään Postmanilla POST pyyntö täyttämällä vaadittavat inputit
     "email": "testi@testi.fi",
     "password": "testi123"
 }
-http://localhost/REST_API/user/register.php
+http://localhost/BackEnd/user/register.php
 
 
 Kirjautuminen
@@ -58,7 +58,7 @@ Lähetetään Postmanilla POST pyyntö täyttämällä vaadittavat inputit
     "email": "testi@testi.fi",
     "password": "testi123"
 }
-http://localhost/REST_API/user/login.php
+http://localhost/BackEnd/user/login.php
 
 Haetaan halutun käyttäjän tiedot (POST)
 Kun kirjaudutaan, responsessa on token ja tätä tokenia käyttämällä saadaan käyttäjän tiedot
@@ -67,4 +67,4 @@ Key             Value
 
 Authorization   Bearer <token>
 
-http://localhost/REST_API/user/user-info.php
+http://localhost/BackEnd/user/user-info.php

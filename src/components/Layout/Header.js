@@ -1,8 +1,7 @@
-//Linkki käyttöön react-router-domista
 import "../../App.css";
 import { useContext } from 'react';
 import {Link} from 'react-router-dom'; 
-import { CartState } from '../../context/Context';
+import { CartState } from '../../context/Context';      /*Hyödynnetään Contextit, voidaan näyttää montako itemiä on ostokorissa ja piilotella/näyttää likkejä jos löytyy/ei löydy user */
 import { UserContext} from '../../context/UserContext';
 
 /* NAVIGOINTI */
@@ -45,13 +44,18 @@ function Nav() {
             : 
             ''
           }
-          <Link className="NavStyle" to="/shop">
-            <li>Shop </li>
+          <Link 
+            className="NavStyle" 
+            to="/shop"
+          >
+            <li>Shop</li>
           </Link>
-          <Link className="NavStyle" to="/cart">
+          <Link 
+            className="NavStyle" 
+            to="/cart"
+          >
             <li>Cart({cart.length})</li>
           </Link>
-
         </ul>
     </nav>
   );

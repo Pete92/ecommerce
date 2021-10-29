@@ -13,22 +13,20 @@ function msg($success,$status,$message,$extra = []){
     ],$extra);
 }
 
-// INCLUDING DATABASE AND MAKING OBJECT
+// Incluudataan database ja uusi objectin teko
 include_once '../config/database.php';
-
 $database = new Database();
 $db = $database->getConnection();
-
 
 // GET DATA FORM REQUEST
 $data = json_decode(file_get_contents("php://input"));
 $returnData = [];
 
-// IF REQUEST METHOD IS NOT POST
+// Jos methodi ei ole POST
 if($_SERVER["REQUEST_METHOD"] != "POST"):
     $returnData = msg(0,404,'Page Not Found!');
 
-// CHECKING EMPTY FIELDS
+// Tarkistetaan tyhjät inputit
 elseif(!isset($data->name) 
     || !isset($data->email) 
     || !isset($data->password)
@@ -40,7 +38,7 @@ elseif(!isset($data->name)
     $fields = ['fields' => ['name','email','password']];
     $returnData = msg(0,422,'Please Fill in all Required Fields!',$fields);
 
-// IF THERE ARE NO EMPTY FIELDS THEN-
+// Jos ei ole tyjiä inputteja
 else:
     
     $name = trim($data->name);

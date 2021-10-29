@@ -7,7 +7,7 @@
         private $conn;
 
         // Taulu
-        private $db_table = "Items";
+        private $db_table = "items";
 
         // Columns
         public $id;
@@ -15,6 +15,7 @@
         public $description;
         public $price;
         public $image;
+        public $gtin;
 
         // Tietokanta yhteys
         public function __construct($db){
