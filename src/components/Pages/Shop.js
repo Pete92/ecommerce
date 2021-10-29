@@ -12,7 +12,7 @@ function Shop() {
     useEffect(() => {
       
       const fetchItems = async () => {  //Haetaan tuotteet api urlista
-        const data = await fetch('../../../BackEnd/items/read.php');
+        const data = await fetch('https://backenddphp.herokuapp.com/items/read.php');
         const items = await data.json();
         setItems(items);
         //console.log(items);

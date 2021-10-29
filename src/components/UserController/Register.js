@@ -14,7 +14,7 @@ const Register = () => {
    const [errorPassword, setPasswordError] = useState(false);
 
 
-   const REGISTER_URL = "http://localhost/BackEnd/user/register.php";      
+   const REGISTER_URL = "https://backenddphp.herokuapp.com/user/register.php";      
 
    const  handleSubmit = (e) => {   //Formin käsittelijä
       e.preventDefault()

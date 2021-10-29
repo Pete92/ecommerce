@@ -12,7 +12,7 @@ const Login = () => {
     const [error, setError] = useState(false);     //Error message
 
 
-    const LOGIN_URL = "http://localhost/BackEnd/user/login.php";
+    const LOGIN_URL = "https://backenddphp.herokuapp.com/user/login.php";
 
 
     function handleSubmit(e) {      //Formin käsittelijä
