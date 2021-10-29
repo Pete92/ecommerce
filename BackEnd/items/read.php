@@ -1,10 +1,10 @@
 <?php
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/json; charset=UTF-8");
-    
+
+    // Incluudataan database, luokka ja uusi objectin teko
     include_once '../config/database.php';
     include_once '../class/items.php';
-
     $database = new Database();
     $db = $database->getConnection();
 

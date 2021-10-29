@@ -4,12 +4,12 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-//Ostoskori
-import Context from './context/Context';
+
+import Context from './context/Context'; //Tässä Contextissa on CartState ja lisäys/poisto toiminta
 
 ReactDOM.render(
   <React.StrictMode>
-    <Context>
+    <Context> {/* Tämän sisällä olevassa App componentissa pääästää käsiksi Contextiin */}
     <App />
     </Context>
     

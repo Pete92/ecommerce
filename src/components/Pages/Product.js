@@ -9,24 +9,22 @@ import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons'
 
 /* TUOTESIVU */
 
-function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai ensikertaa ladataan.
-    useEffect(() => {   //Match hakee tiedot urlista ja tätä voidaan hyödyntaa jos esim halutaan hakea id tiedot
-        fetchItem();
-        //console.log(match);
-    }, [])
+function Product({ match }) { //Match hakee tiedot urlista ja tätä voidaan hyödyntää jos esim halutaan hakea id tiedot
 
-    const [item, setItem] = useState([]); //saten määritys
+    useEffect(() => {  
 
-
-    //Hetaan rest apista tämä id data ja laitetaan stateen
-    const fetchItem = async () => {
+      const fetchItem = async () => {   //Haetaan tuote tiedot käyttäen id päätettä
         const fetchItem = await fetch(`http://localhost/BackEnd/items/single_read.php/?id=${match.params.id}`);
         const item = await fetchItem.json();
         console.log(item);
         setItem(item);
     };
-    
+        fetchItem();
+    }, [match])                  /* Hakee vain kerran datan kun, ollaan sivulla. Jos halutaan tietokannassa vaihtaa nimikettä ja heti halutaan muutos näkyviin stateen, 
+                                    niin otetaan [] pois. ilman [] hakee kokoajan datan stateen*/
 
+
+  const [item, setItem] = useState([]);     //Stateen tulee yksittäinen item verkkokaupasta
 
   return (
       <Container>
@@ -36,20 +34,23 @@ function Product({ match }) { //UseEffect = kun sivulla tapahtuu jotatain tai en
               <Link to="/shop"
               className="arrowStyle" 
               >
-                  
-                  <FontAwesomeIcon 
-                    icon={faLongArrowAltLeft} />
+                <FontAwesomeIcon 
+                  icon={faLongArrowAltLeft} 
+                />
               </Link>
             </Col>
           </Row>
-          <Col className="kuvaDiv">
+          <Col 
+            className="kuvaDiv">
             <img 
               style={{maxHeight: 240}} 
               src={item.image} alt="tuote"
             />
           </Col>
           <Col xs={12} md={4} xl={6}>
-            <h4 style={{padding: '2rem 0'}}>{ item.title }</h4> {/* renderöidään käyttäjälle title ja kuva */}
+            <h4 style={{padding: '2rem 0'}}>
+                { item.title }
+            </h4> 
             <p>{item.description}</p>
             <h3>{item.price}$</h3>
           </Col>

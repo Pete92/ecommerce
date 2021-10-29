@@ -1,36 +1,44 @@
 import "../../App.css";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";        //Voidaan ohjata käyttäjä login sivulle
+import { useState } from "react";
 
 
 /* REGISTER COMPONENTTI */
 const Register = () => {
-   const history = useHistory();
-   const Register_URL = "http://localhost/BackEnd/user/register.php";
 
-   const  handleSubmit = (e) => {
+   const history = useHistory();
+
+   const [error, setError] = useState(false);                  /* Error ilmoitukset statessa */
+   const [errorPassword, setPasswordError] = useState(false);
+
+
+   const REGISTER_URL = "http://localhost/BackEnd/user/register.php";      
+
+   const  handleSubmit = (e) => {   //Formin käsittelijä
       e.preventDefault()
       const { name, email, password, passwordSecond } = e.target.elements
-      console.log({name: name.value, email: email.value, password: password.value, passwordSecond: passwordSecond.value })
-
-
+      
       if(password.value !== passwordSecond.value){
-         console.log("Salasanat eivät tästää")
-
-         return;
+         //console.log("Salasanat eivät tästää");
+         return setPasswordError(true);
       }
 
-       axios.post(Register_URL, { name: name.value, email: email.value, password: password.value }).then((response) => {
-          if(response.data.success === 1){
-               console.log(response.data);
-                history.push("/login"); //siirretään käyttäjä /shop sivulle
-          } else  {
-              return console.log("Epäonnistui kokeiluu uudelleen");
-          }  
-    });
-  }
+      const inputs = {name: name.value, email: email.value, password: password.value};
+      registerUser(inputs);
+   }
 
+   const registerUser = async ( inputs ) => {      //Rekisteröitymisen toiminta
+      setError(false);
+        const result = await axios.post(REGISTER_URL, inputs );
+            if(result.data.success === 1){
+               history.push("/login"); 
+               //console.log(result.data);
+            } else {
+               setError(true);
+            }
+      }
 
     return (
         <Container>
@@ -43,6 +51,13 @@ const Register = () => {
         </Col>
         <Row>
            <Col md={4} style={{margin: "0 auto"}}>
+              {/* Error Viestit */}
+               {
+                 error && <div style={{color: `red`}}>Jokin meni pieleen, tarkista tiedot</div>
+               }
+               {
+                 errorPassword && <div style={{color: `red`}}>Salasanat eivät täsmää</div>
+               }
               <Form onSubmit={handleSubmit}>
                     <Form.Group className="formGroup">
                        <input type="text" name="name"  className="form-control my-input" id="name" placeholder="Name" />
