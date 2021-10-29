@@ -14,7 +14,7 @@ function Product({ match }) { //Match hakee tiedot urlista ja t채t채 voidaan hy�
     useEffect(() => {  
 
       const fetchItem = async () => {   //Haetaan tuote tiedot k채ytt채en id p채채tett채
-        const fetchItem = await fetch(`http://localhost/BackEnd/items/single_read.php/?id=${match.params.id}`);
+        const fetchItem = await fetch(`https://backenddphp.herokuapp.com/items/single_read.php/?id=${match.params.id}`);
         const item = await fetchItem.json();
         console.log(item);
         setItem(item);
