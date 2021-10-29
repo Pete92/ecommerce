@@ -35,7 +35,7 @@ function Cart() {
             </Col>
           </Row>
           {cart.map((item) =>
-            <ListGroup.Item key={item} style={{border: 'none'}}>
+            <ListGroup.Item key={item.id} style={{border: 'none'}}>
               <Row style={{boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', padding: '30px 0'}}>
                 <Col md={3} style={{textAlign: "center"}}>
                   <Image style={{width: "40%"}} src={item.image} alt={item.title} fluid />
