@@ -39,7 +39,12 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
                                     Details
                                 </Button>
                             </Link>
-                             <Button 
+
+                            {/* Ensimmäisen lisäyksen jälkeen, ei voi uudestaan lisätä samaa tuotetta */}
+                            {
+                                !msg ?
+                                 
+                                <Button 
                                 className="shopButton" 
                                 variant="" style={{margin: "0 5px"}} 
                                 onClick={() =>{         /* Muutetaan state ja lisätään ostoskoriin tuote */
@@ -51,16 +56,16 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
                                     })
                                     
                                 }}>
-
-                                    {/* Vaihdetaan napin teksti Staten mukaan */}
-                                    {
-                                        !msg ? 
-                                            <span>Add to cart</span>
-                                        :
-
-                                        <span style={{color: "black"}}>Ostoskorissa</span>
-                                    }
+                                <span>Add to cart</span>      
                                 </Button>
+                            :
+
+                                <Button 
+                                    className="shopButton" variant="" style={{margin: "0 5px"}}>
+                                    <span style={{color: "black"}}>Ostoskorissa</span>
+                                </Button>
+                            }
+                            
     
                                 
                         </Col>

@@ -9,7 +9,9 @@ import { useHistory } from "react-router-dom";
 const Login = () => {
     const history = useHistory();                  //Voidaan ohjata käyttäjä kirjautumisen jälkeen
     const { setUser } = useContext(UserContext);   //Laitetaan onnistuneen login jälkeen token stateen
-    const [error, setError] = useState(false);     //Error message
+    const [errors, setError] = useState();     //Error message
+
+
 
 
     const LOGIN_URL = "https://backenddphp.herokuapp.com/user/login.php";
@@ -34,7 +36,8 @@ const Login = () => {
                history.push("/shop"); 
                //console.log(result.data);
             } else {
-               setError(true);
+               setError(result.data);
+               //console.log(errors);
             }
       }
       
@@ -51,8 +54,12 @@ const Login = () => {
             </Row>
             <Row>
                <Col md={4} style={{margin: "0 auto"}}>
+                  {/* Login errorin näyttäminen */}
                   {
-                     error && <div style={{color: `red`}}>Jokin meni pieleen, tarkista tiedot</div>
+                     errors && 
+                     <div style={{color: `red`}}>
+                        <span>{errors.message}</span>
+                     </div>    
                   }
                   <Form onSubmit={handleSubmit}>
                         <Form.Group className="formGroup">

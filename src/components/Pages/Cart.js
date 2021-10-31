@@ -47,7 +47,8 @@ function Cart() {
                   <span>{item.price} $</span>
                 </Col>
                 <Col md={3}>
-                  <Button 
+                  <Button
+                  style={{ backgroundColor: "#fff", border: "none"}} 
                     type="button"
                     variant="light"
                     onClick={() =>{

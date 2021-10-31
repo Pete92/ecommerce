@@ -10,7 +10,7 @@ const Register = () => {
 
    const history = useHistory();
 
-   const [error, setError] = useState(false);                  /* Error ilmoitukset statessa */
+   const [errors, setError] = useState();                  /* Error ilmoitukset statessa */
    const [errorPassword, setPasswordError] = useState(false);
 
 
@@ -36,7 +36,7 @@ const Register = () => {
                history.push("/login"); 
                //console.log(result.data);
             } else {
-               setError(true);
+               setError(result.data);
             }
       }
 
@@ -53,10 +53,16 @@ const Register = () => {
            <Col md={4} style={{margin: "0 auto"}}>
               {/* Error Viestit */}
                {
-                 error && <div style={{color: `red`}}>Jokin meni pieleen, tarkista tiedot</div>
+                 errors && 
+                  <div style={{color: `red`}}>
+                     <span>{ errors.message }</span>
+                  </div>
                }
                {
-                 errorPassword && <div style={{color: `red`}}>Salasanat eivät täsmää</div>
+                 errorPassword && 
+                     <div style={{color: `red`}}>
+                        <span>Salasanat eivät täsmää</span>
+                     </div>
                }
               <Form onSubmit={handleSubmit}>
                     <Form.Group className="formGroup">
