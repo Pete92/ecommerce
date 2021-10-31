@@ -9,7 +9,7 @@ import { UserContext} from '../../context/UserContext';
 function Nav() {
 
   const { user } = useContext(UserContext);
-  console.log(user)
+  //console.log(user)
   
   const {
     state: { cart }
