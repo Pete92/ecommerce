@@ -10,8 +10,11 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
     const [msg, setMsg] = useState();   //Stateen laitetaan vain teksti
 
     const {
+        state: { cart },
         dispatch,  //Suorittaa tuotteen lisäyksen ostoskoriin
     } = CartState();
+
+
     //console.log(cart)
     return(
             <Col xs={12} md={6} xl={4}>
@@ -39,8 +42,8 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
                                     Details
                                 </Button>
                             </Link>
-
                             {/* Ensimmäisen lisäyksen jälkeen, ei voi uudestaan lisätä samaa tuotetta */}
+
                             {
                                 !msg ?
                                  
@@ -56,13 +59,13 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
                                     })
                                     
                                 }}>
-                                <span>Add to cart</span>      
+                                <span>Add to cart{cart.id}</span>      
                                 </Button>
                             :
 
                                 <Button 
                                     className="shopButton" variant="" style={{margin: "0 5px"}}>
-                                    <span style={{color: "black"}}>Ostoskorissa</span>
+                                    <span style={{color: "black"}}>Ostoskorissa{cart.id}</span>
                                 </Button>
                             }
                             
