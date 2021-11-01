@@ -4,7 +4,7 @@ Käytin tässä projektin käyttöliittymässä React ja BackEndinä tomii PHP.
 
 ## Sovelluksen ominaisuuksia:
 
-Sovelluksessa on kaikkien tuotteiden menu, tietyn tuotteen esittäminen, tuotteen haku mahdollisuus tuote nimellä tai GTIN-Koodilla, ostoskoriin lisäämin, ostoskorista poisto, kirjautuminen ja rekisteröityminen,
+Sovelluksessa on kaikkien tuotteiden menu, tietyn tuotteen esittäminen, tuotteen haku mahdollisuus tuote nimellä tai GTIN-Koodilla, ostoskoriin lisäämin, ostoskorista poisto, kirjautuminen ja rekisteröityminen.
 
 ## Tietoa
 
