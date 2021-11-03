@@ -1,11 +1,9 @@
-import {Container, Row, Col, Image, ListGroup, Button} from 'react-bootstrap';
+import {Container, Row, Col, Image, ListGroup, Button, Form } from 'react-bootstrap';
 import { CartState } from "../../context/Context";
 import { AiFillDelete } from "react-icons/ai";
 import { useState, useEffect } from 'react';
 
 /* OSTOSKORI */
-
-
 
 function Cart() {              
     const {
@@ -18,7 +16,7 @@ function Cart() {
   useEffect(() => {
     setTotal(cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty , 0));
   }, [cart])
-
+  //console.log(cart)
   return (
       <Container>
         <ListGroup>
@@ -27,7 +25,7 @@ function Cart() {
             {/* Summan näyttäminen */}
             {
               total > 0 ? 
-                <span style={{ fontWeight: 700, fontSize: 20 }}>Total: {total} $</span>
+                <span style={{ fontWeight: 700, fontSize: 20 }}>Summa: {total} $</span>
               : 
                 <h3 style={{ fontWeight: 700, fontSize: 30, textAlign: 'center', marginTop: '20%' }} >Ostoskori on tyhjä</h3>
             }
@@ -43,10 +41,30 @@ function Cart() {
                 <Col md={3}>
                   <span>{item.title}</span>
                 </Col>
-                <Col md={3}>
+                <Col md={2}>
                   <span>{item.price} $</span>
                 </Col>
-                <Col md={3}>
+                <Col md={2}>
+                {/* kappalemäärä */}
+                  <Form.Select size="sm"
+                    onChange={(e) => 
+                      dispatch({
+                        type: "CHANGE_CART_QTY",
+                        payload: {
+                          id: item.id,
+                          qty: e.target.value
+                        }
+                      })
+                      }
+                  >
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                </Form.Select> 
+                </Col>
+                <Col md={1}>
                   <Button
                   style={{ backgroundColor: "#fff", border: "none"}} 
                     type="button"

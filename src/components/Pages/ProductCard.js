@@ -7,13 +7,12 @@ import { useState } from "react";
 
 const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item stateen
 
-    const [msg, setMsg] = useState();   //Stateen laitetaan vain teksti
+    const [msg, setMsg] = useState();   //Piilotetaan add to cart
 
     const {
         state: { cart },
         dispatch,  //Suorittaa tuotteen lisäyksen ostoskoriin
     } = CartState();
-
 
     //console.log(cart)
     return(
@@ -59,13 +58,13 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
                                     })
                                     
                                 }}>
-                                <span>Add to cart{cart.id}</span>      
+                                <span>Add to cart</span>      
                                 </Button>
                             :
 
                                 <Button 
                                     className="shopButton" variant="" style={{margin: "0 5px"}}>
-                                    <span style={{color: "black"}}>Ostoskorissa{cart.id}</span>
+                                    <span style={{color: "black"}}>Ostoskorissa</span>
                                 </Button>
                             }
                             
