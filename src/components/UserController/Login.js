@@ -29,12 +29,12 @@ const Login = () => {
          setError(false);
            const result = await axios.post(LOGIN_URL, inputs );
             if(result.data.success === 1){
-               if (result.data.token) {
-                  localStorage.setItem("token", JSON.stringify(result.data)); //Laitetaan result localStorageen(Ei käyttöä vielä)
-                  setUser(result.data.token);
+               if (result.data.email) {
+                  localStorage.setItem("user", JSON.stringify(result.data.email[0])); //Laitetaan result localStorageen(Ei käyttöä vielä)
+                  setUser(result.data.email[0]);
                }
                history.push("/shop"); 
-               //console.log(result.data);
+               //console.log(result.data.email[0]);
             } else {
                setError(result.data);
                //console.log(errors);
