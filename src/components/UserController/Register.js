@@ -19,18 +19,17 @@ const Register = () => {
    const  handleSubmit = (e) => {   //Formin käsittelijä
       e.preventDefault()
       const { name, email, password, passwordSecond } = e.target.elements
-      
-      if(password.value !== passwordSecond.value){
-         //console.log("Salasanat eivät tästää");
-         return setPasswordError(true);
-      }
+
+         if(password.value !== passwordSecond.value){
+            //console.log("Salasanat eivät tästää");
+            return setPasswordError(true);
+         }
 
       const inputs = {name: name.value, email: email.value, password: password.value};
       registerUser(inputs);
    }
 
    const registerUser = async ( inputs ) => {      //Rekisteröitymisen toiminta
-      setError(false);
         const result = await axios.post(REGISTER_URL, inputs );
             if(result.data.success === 1){
                history.push("/login"); 
@@ -93,5 +92,4 @@ const Register = () => {
     </Container>
     )
 }
-
 export default Register;

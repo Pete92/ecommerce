@@ -26,7 +26,6 @@ const Login = () => {
       }
       
       const fetchUser = async ( inputs ) => {   //Kirjautumisen toiminta
-         setError(false);
            const result = await axios.post(LOGIN_URL, inputs );
             if(result.data.success === 1){
                if (result.data.email) {

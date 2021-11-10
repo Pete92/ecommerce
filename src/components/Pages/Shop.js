@@ -7,7 +7,9 @@ import { UserContext} from '../../context/UserContext';   //Käytetään Context
 
 
 function Shop() {
-  const { user } = useContext(UserContext);  
+  const { user } = useContext(UserContext);
+  const [items, setItems] = useState([]);       //Tähän stateen tulee kaikki itemit kaupassa
+    const [search, searchItems] = useState("");   //Tällä statella filteroidaan haluttuun tuotteeseen.  
 
     useEffect(() => {
       
@@ -21,14 +23,9 @@ function Shop() {
     }, []) /* Hakee vain kerran datan kun, ollaan sivulla. Jos halutaan tietokannassa vaihtaa nimikettä ja heti halutaan muutos näkyviin stateen, 
               niin otetaan [] pois. ilman [] hakee kokoajan datan stateen*/
 
- 
-    const [items, setItems] = useState([]);       //Tähän stateen tulee kaikki itemit kaupassa
-    const [search, searchItems] = useState("");   //Tällä statella filteroidaan haluttuun tuotteeseen.
-
   return ( 
       <Container style={{marginTop: '1.3rem'}}>
         <Row>
-
         {/*  Näytetään input jos user löytyy */ }
           { 
             user.length > 0 ? 
@@ -49,19 +46,17 @@ function Shop() {
           {
             items.filter((item) => {
             
-                if (searchItems === ""){
-                  return null
+              if (searchItems === ""){
+                return null
 
-                } else if (item.title.toLowerCase().includes(search.toLowerCase()) || item.gtin.toLowerCase().includes(search.toLowerCase())){
-                  return <ProductCard key={item.id} item={item}  />
-                }
-
-              }).map((item) => { 
+              } else if (item.title.toLowerCase().includes(search.toLowerCase()) || item.gtin.toLowerCase().includes(search.toLowerCase())){
                 return <ProductCard key={item.id} item={item}  />
-              })
-              
+              }
+
+            }).map((item) => { 
+              return <ProductCard key={item.id} item={item}  />
+            })  
           }
-        
         </Row>
       </Container> 
   )

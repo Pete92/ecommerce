@@ -10,7 +10,7 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
     const [msg, setMsg] = useState();   //Piilotetaan add to cart
 
     const {
-        state: { cart },
+        /* state: { cart }, */
         dispatch,  //Suorittaa tuotteen lisäyksen ostoskoriin
     } = CartState();
 
@@ -67,14 +67,10 @@ const ProductCard = ({item}) => {  //Shop sivulla annettiin pääsy tähän item
                                     <span style={{color: "black"}}>Ostoskorissa</span>
                                 </Button>
                             }
-                            
-    
-                                
                         </Col>
                     </Card.Body>
                 </Card>
             </Col>
     )
 }
-
 export default ProductCard;
