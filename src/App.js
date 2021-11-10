@@ -8,7 +8,7 @@ import Login from './components/UserController/Login';
 import Register from './components/UserController/Register';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; //bootsrapin css
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';  //Käytetään react-router-domia, jotta voidaan ohjata ja näyttää oikea sivu
 import { UserContext } from './context/UserContext';                      //Voidaan lähettää user tietoja moneen paikkaan
@@ -17,11 +17,11 @@ import { Redirect } from "react-router-dom";                              //Ohja
 
 function App() {
   const [user, setUser] = useState([]);
-  const value = useMemo(() => ({ user, setUser }), [user, setUser]);
+  //const value = useMemo(() => ({ user, setUser }), [user, setUser]);
   
   return (
     <Router>
-      <UserContext.Provider value={value}>  {/* tämän sisällä olevat componentit pääsevät käsiksi user stateen */}
+      <UserContext.Provider value={{ user, setUser }}>  {/* tämän sisällä olevat componentit pääsevät käsiksi user stateen */}
       <div className="App">
         <Nav />
           <Switch>

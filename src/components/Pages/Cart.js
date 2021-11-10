@@ -14,8 +14,8 @@ function Cart() {
   const [total, setTotal] = useState(); //Laitetaan stateen summa
 
   useEffect(() => {
-    setTotal(cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty , 0));
-  }, [cart])
+    setTotal(cart.reduce((acc, curr) => acc + Number(curr.price) * curr.qty , 0)); //Lasketaan summa, tämän hetkisen tuotteen hinta * qty
+  }, [cart]) //State aktiiviseksi
   //console.log(cart)
   return (
       <Container>

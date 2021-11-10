@@ -12,7 +12,6 @@ ReactDOM.render(
     <Context> {/* Tämän sisällä olevassa App componentissa pääästää käsiksi Contextiin */}
     <App />
     </Context>
-    
   </React.StrictMode>,
   document.getElementById('root')
 );
